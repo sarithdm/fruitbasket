@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Basket - Fresh Fruits Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .fruit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 40px;
+        }
+
+        .fruit-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+
+        .fruit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .fruit-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+        }
+
+        .fruit-info {
+            padding: 20px;
+        }
+
+        .fruit-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .fruit-price {
+            font-size: 1.3em;
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .fruit-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background: linear-gradient(45deg, #5a6fd8, #6a4190);
+            transform: translateY(-2px);
+        }
+
+        .cart-summary {
+            background: #f8f9fa;
+            padding: 20px;
+            border-top: 1px solid #e9ecef;
+            text-align: center;
+        }
+
+        .cart-count {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .total-price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .checkout-btn {
+            margin-top: 15px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🍎 Fruit Basket</h1>
+            <p>Fresh, Organic Fruits Delivered to Your Door</p>
+        </header>
+
+        <main class="fruit-grid">
+            <div class="fruit-card">
+                <div class="fruit-image">🍎</div>
+                <div class="fruit-info">
+                    <div class="fruit-name">Red Apples</div>
+                    <div class="fruit-price">$3.99 / lb</div>
+                    <div class="fruit-description">Crisp and sweet red apples, perfect for snacking or baking. Rich in fiber and vitamins.</div>
+                    <button class="add-to-cart" onclick="addToCart('Red Apples', 3.99)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <div class="fruit-image">🍌</div>
+                <div class="fruit-info">
+                    <div class="fruit-name">Bananas</div>
+                    <div class="fruit-price">$2.49 / bunch</div>
+                    <div class="fruit-description">Fresh yellow bananas, great source of potassium and natural energy. Perfect for smoothies.</div>
+                    <button class="add-to-cart" onclick="addToCart('Bananas', 2.49)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <div class="fruit-image">🍊</div>
+                <div class="fruit-info">
+                    <div class="fruit-name">Oranges</div>
+                    <div class="fruit-price">$4.99 / bag</div>
+                    <div class="fruit-description">Juicy Valencia oranges packed with Vitamin C. Fresh and perfect for juice or eating.</div>
+                    <button class="add-to-cart" onclick="addToCart('Oranges', 4.99)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <div class="fruit-image">🍇</div>
+                <div class="fruit-info">
+                    <div class="fruit-name">Grapes</div>
+                    <div class="fruit-price">$5.99 / lb</div>
+                    <div class="fruit-description">Sweet seedless grapes, perfect for snacking. Rich in antioxidants and natural sugars.</div>
+                    <button class="add-to-cart" onclick="addToCart('Grapes', 5.99)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <div class="fruit-image">🥭</div>
+                <div class="fruit-info">
+                    <div class="fruit-name">Mangoes</div>
+                    <div class="fruit-price">$1.99 / each</div>
+                    <div class="fruit-description">Tropical mangoes bursting with flavor. Rich in vitamins A and C, perfect for desserts.</div>
+                    <button class="add-to-cart" onclick="addToCart('Mangoes', 1.99)">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="fruit-card">
+                <div class="fruit-image">🍓</div>
+                <div class="fruit-info">
+                    <div class="fruit-name">Strawberries</div>
+                    <div class="fruit-price">$6.99 / container</div>
+                    <div class="fruit-description">Fresh, sweet strawberries. Perfect for desserts, smoothies, or eating fresh.</div>
+                    <button class="add-to-cart" onclick="addToCart('Strawberries', 6.99)">Add to Cart</button>
+                </div>
+            </div>
+        </main>
+
+        <div class="cart-summary">
+            <div class="cart-count">Cart Items: <span id="cartCount">0</span></div>
+            <div class="total-price">Total: $<span id="totalPrice">0.00</span></div>
+            <button class="checkout-btn" onclick="checkout()">Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addToCart(name, price) {
+            cart.push({name: name, price: price});
+            total += price;
+            updateCartDisplay();
+            
+            // Add some visual feedback
+            event.target.style.background = 'linear-gradient(45deg, #28a745, #20c997)';
+            event.target.textContent = 'Added!';
+            
+            setTimeout(() => {
+                event.target.style.background = 'linear-gradient(45deg, #667eea, #764ba2)';
+                event.target.textContent = 'Add to Cart';
+            }, 1000);
+        }
+
+        function updateCartDisplay() {
+            document.getElementById('cartCount').textContent = cart.length;
+            document.getElementById('totalPrice').textContent = total.toFixed(2);
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert('Your cart is empty! Add some delicious fruits first.');
+                return;
+            }
+            
+            let orderSummary = 'Order Summary:\n\n';
+            cart.forEach(item => {
+                orderSummary += `${item.name}: $${item.price.toFixed(2)}\n`;
+            });
+            orderSummary += `\nTotal: $${total.toFixed(2)}`;
+            orderSummary += '\n\nThank you for your order! 🍎🍌🍊';
+            
+            alert(orderSummary);
+            
+            // Reset cart
+            cart = [];
+            total = 0;
+            updateCartDisplay();
+        }
+    </script>
+</body>
+</html>
